@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DialogController">
+   <Button fx:id="close" layoutX="51.0" layoutY="227.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="507.0"
+           text="ЗАКРЫТЬ">
+      <font>
+         <Font size="65.0"/>
+      </font>
+   </Button>
+   <Label fx:id="error" layoutX="51.0" layoutY="28.0" prefHeight="189.0" prefWidth="507.0" text="ОШИБКА ">
+      <font>
+         <Font size="48.0"/>
+      </font>
+   </Label>
+</AnchorPane>
