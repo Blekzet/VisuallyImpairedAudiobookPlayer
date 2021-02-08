@@ -8,6 +8,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import service.AudioService;
+import service.StringFormatter;
 import stages.DialogStage;
 
 import java.util.Timer;
@@ -15,7 +16,6 @@ import java.util.TimerTask;
 
 public class MainWindowController {
     private boolean isPlaying = true;
-    private MediaPlayer player;
     private final DialogStage errorStage = new DialogStage();
 
     public Button pauseOrPlay;
@@ -31,13 +31,12 @@ public class MainWindowController {
 
     public void pauseOrPlayClick(ActionEvent actionEvent) {
         try{
-           player = AudioService.getAudiobook();
            if(isPlaying){
-               player.pause();
+               AudioService.getAudiobook().pause();
                isPlaying = false;
                pauseOrPlay.setText("ВОСПРОИЗВЕСТИ");
            }else {
-               player.play();
+               AudioService.getAudiobook().play();
                isPlaying = true;
                pauseOrPlay.setText("ПАУЗА");
            }
@@ -50,10 +49,21 @@ public class MainWindowController {
     }
 
     public void nextAudio(ActionEvent actionEvent) {
-
+        try{
+            AudioService.nextAudiobook(false);
+        } catch (NullPointerException e){
+            errorStage.showErrorStage("НЕТ ФАЙЛА");
+            return;
+        }
     }
 
     public void prevAudio(ActionEvent actionEvent) {
+        try{
+            AudioService.nextAudiobook(true);
+        } catch (NullPointerException e){
+            errorStage.showErrorStage("НЕТ ФАЙЛА");
+            return;
+        }
     }
 
     public void saveClick(ActionEvent actionEvent) {
@@ -68,16 +78,11 @@ public class MainWindowController {
             @Override
             public void run() {
                 Platform.runLater(() -> timer.setText(
-                        String.valueOf(formatDuration(AudioService.getAudiobook().getCurrentTime()))
+                        String.valueOf(StringFormatter.formatDurationFromSecondToStandart(AudioService.getAudiobook().getCurrentTime()))
                         + "/"
-                        + String.valueOf(formatDuration(AudioService.getAudiobook().getStopTime()))
+                        + String.valueOf(StringFormatter.formatDurationFromSecondToStandart(AudioService.getAudiobook().getStopTime()))
                 ));
             }
         }, 0, 1000);
-    }
-
-    private String formatDuration(Duration duration){
-        int seconds = (int) duration.toSeconds();
-        return String.format("%d:%02d:%02d",  seconds / 3600, (seconds % 3600) / 60, (seconds % 60));
     }
 }

@@ -42,7 +42,7 @@ public class ViapMain extends Application {
         List<String> args = parameters.getRaw();
         if(args.size() > 0){
             Path path = Paths.get(args.get(0));
-            AudioService.openAudiobookFromPath(path.toUri().toString());
+            AudioService.openAudiobookFromPath(path);
             mainWindowController.setTimer();
         }else return;
     }
