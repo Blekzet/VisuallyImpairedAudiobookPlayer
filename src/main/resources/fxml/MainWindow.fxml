@@ -19,7 +19,7 @@
       </font>
    </Button>
    <Button fx:id="pauseOrPlay" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" prefHeight="99.0"
-           prefWidth="574.0" text="ПАУЗ./ВОСПР." onAction="#pauseOrPlayClick">
+           prefWidth="574.0" text="ПАУЗА" onAction="#pauseOrPlayClick">
       <font>
          <Font size="41.0"/>
       </font>

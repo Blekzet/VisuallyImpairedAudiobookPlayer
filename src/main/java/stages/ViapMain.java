@@ -1,14 +1,21 @@
 package stages;
 
+import controller.MainWindowController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import service.AudioService;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ViapMain extends Application {
     FXMLLoader fxmlLoader;
+    MainWindowController mainWindowController;
+
 
     public static void main(String[] args){
         Application.launch(args);
@@ -26,6 +33,17 @@ public class ViapMain extends Application {
         }
         stage.setScene(mainScene);
         stage.show();
+        audioStart();
+    }
 
+    private void audioStart(){
+        mainWindowController = fxmlLoader.getController();
+        Parameters parameters = getParameters();
+        List<String> args = parameters.getRaw();
+        if(args.size() > 0){
+            Path path = Paths.get(args.get(0));
+            AudioService.openAudiobookFromPath(path.toUri().toString());
+            mainWindowController.setTimer();
+        }else return;
     }
 }

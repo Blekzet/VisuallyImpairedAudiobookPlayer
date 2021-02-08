@@ -1,23 +1,30 @@
 package service;
 
+import controller.MainWindowController;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class AudioService {
-    private MediaPlayer audiobook;
+    private static MediaPlayer audiobook;
 
-    public void setAudiobook(MediaPlayer audiobook) {
-        this.audiobook = audiobook;
-    }
+    private AudioService(){};
 
-    public MediaPlayer getAudiobook() {
+    public static MediaPlayer getAudiobook() {
         return audiobook;
     }
 
-    public MediaPlayer openAudiobookFromPath(String path){
+    public static void openAudiobookFromPath(String path){
         Media bookFile = new Media(path);
-        return new MediaPlayer(bookFile);
+        audiobook = new MediaPlayer(bookFile);
+        audiobook.play();
     }
 
+    public static void nextAudiobook(){
+
+    }
+
+    public static void prevAudiobook(){
+
+    }
 
 }
