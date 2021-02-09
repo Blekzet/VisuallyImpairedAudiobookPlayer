@@ -3,13 +3,12 @@ package service;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.nio.file.Path;
-import java.util.Set;
 
 public class AudioService {
     private static MediaPlayer audiobook;
     private static String currentAudiobookName;
     private static Path currentDir;
-    private static Set<String> audiobooksNameSet;
+    private static Path currentAudiobookPath;
 
     private AudioService(){};
 
@@ -18,28 +17,24 @@ public class AudioService {
     }
 
     public static void openAudiobookFromPath(Path path){
+        currentAudiobookPath = path;
         currentAudiobookName = path.getFileName().toString();
         currentDir = path.getParent();
 
         Media bookFile = new Media(path.toUri().toString());
-
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();
     }
 
     public static void nextAudiobook(boolean reverceFlag){
         AudioFileService.filesList(currentDir);
-        String nextFilename = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverceFlag);
-        Media bookFile = new Media(currentDir.toUri().toString() + nextFilename);
+        currentAudiobookName = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverceFlag);
+        Media bookFile = new Media(currentDir.toUri().toString() + currentAudiobookName);
 
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();
     }
     public static Path getAudiobookPath(){
-        return currentDir;
-    }
-
-    public static String getAudiobookName() {
-        return currentAudiobookName;
+        return currentAudiobookPath;
     }
 }

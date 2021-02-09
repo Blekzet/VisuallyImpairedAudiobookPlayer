@@ -5,15 +5,15 @@ import stages.DialogStage;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AudioFileService {
     private static List<String> filenameList;
-    @Deprecated
-    private static List<String> reverseFilenameList;
+    private static final Path VIAPSave = Paths.get("VIAPSave.save");
 
     public static void filesList(Path path){
         if(filenameList == null) {
@@ -22,13 +22,12 @@ public class AudioFileService {
                         .filter(file -> !Files.isDirectory(file))
                         .map(Path::getFileName)
                         .map(Path::toString)
+                        .filter(x -> StringFormatter.getFileExtension(x).equals(".mp3"))
                         .collect(Collectors.toList());
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        reverseFilenameList = new ArrayList<>(filenameList);
-        Collections.reverse(reverseFilenameList);
     }
 
     public static String getNextOrPrevFilename(String audiobook, boolean reverseFlag){
@@ -40,46 +39,15 @@ public class AudioFileService {
         }
     }
 
-    @Deprecated
-    public static String getFilenameOld(String audiobook, boolean reverseFlag){
-        String currentElement = audiobook;
-        Iterator<String> filenameIter;
-
-        if(reverseFlag){
-            filenameIter = reverseFilenameList.iterator();
-        } else {
-            filenameIter = filenameList.iterator();
-        }
-
-       while(filenameIter.hasNext()){
-           currentElement = filenameIter.next();
-
-           if(!currentElement.equals(audiobook)) continue;
-           else if(filenameIter.hasNext()) currentElement = filenameIter.next();
-           else if(reverseFlag) return reverseFilenameList.get(0);
-           else return filenameList.get(0);
-
-           if(StringFormatter.getFileExtension(currentElement).equals(".mp3")){
-               return currentElement;
-           }
-       }
-       return currentElement;
-    }
-
-
     public static void saveAudiobookData(Path audiobookPath){
         try {
-            Path audiobookDataSaveFile = Files.createFile(audiobookPath);
-            Files.writeString(audiobookDataSaveFile, audiobookPath.toString(), StandardOpenOption.APPEND);
-            Files.writeString(audiobookDataSaveFile, AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
+            Files.deleteIfExists(VIAPSave);
+            Files.createFile(VIAPSave);
+            Files.writeString(VIAPSave, audiobookPath.toString() + "\n", StandardOpenOption.APPEND);
+            Files.writeString(VIAPSave, AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             new DialogStage().showErrorStage("НЕВОЗМОЖНО СОХРАНИТЬ");
         }
 
     }
-    public static List<String> getFilenameSet(){
-        return filenameList;
-    }
-
-
 }
