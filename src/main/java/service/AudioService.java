@@ -32,8 +32,10 @@ public class AudioService {
 
     public static void nextOrPrevAudiobook(boolean reverseFlag){
         AudioFileService.filesList(currentDir);
-        currentAudiobookName = URLEncoder.encode(AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverseFlag), StandardCharsets.UTF_8);
-        Media bookFile = new Media(currentDir.toUri() + currentAudiobookName);
+        String nextAudiobookName = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverseFlag);
+        currentAudiobookName = nextAudiobookName;
+        String formatAudiobookName = nextAudiobookName.replaceAll(" ", "%20");
+        Media bookFile = new Media(currentDir.toUri() + formatAudiobookName);
 
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();
