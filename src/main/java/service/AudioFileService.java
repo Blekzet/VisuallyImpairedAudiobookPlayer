@@ -2,7 +2,11 @@ package service;
 
 import stages.DialogStage;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,15 +44,21 @@ public class AudioFileService {
         }
     }
 
-    public static void saveAudiobookData(String audiobookPath){
+    public static void saveAudiobookData(Path audiobookPath){
         try {
             Files.deleteIfExists(VIAPSave);
             Files.createFile(VIAPSave);
-            Files.writeString(VIAPSave, audiobookPath + "\n" + AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
+            Files.writeString(VIAPSave, audiobookPath.toAbsolutePath() + "\n" + AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             new DialogStage().showErrorStage("НЕВОЗМОЖНО СОХРАНИТЬ");
         }
 
+    }
+    public static void openAudiobookFromFile() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(String.valueOf(VIAPSave.toAbsolutePath()), StandardCharsets.UTF_8))){
+            AudioService.openAudiobookFromPath(Path.of(reader.readLine()));
+            AudioService.setTimeOnAudiobook(reader.readLine().replace(" ms", ""));
+        }
     }
 
 }

@@ -10,6 +10,8 @@ import service.AudioFileService;
 import service.AudioService;
 import service.StringFormatter;
 import stages.DialogStage;
+
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -71,7 +73,11 @@ public class MainWindowController {
     }
 
     public void resumeFromSaveClick(ActionEvent actionEvent) {
-
+        try {
+            AudioFileService.openAudiobookFromFile();
+        } catch (IOException e) {
+            errorStage.showErrorStage("НЕТ ФАЙЛА");
+        }
     }
 
     public void setTimer(){
@@ -84,7 +90,7 @@ public class MainWindowController {
                         + StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getStopTime())
                 ));
             }
-        }, 0, 1000);
+        }, 0, 10);
     }
 
     public void setSliderSound(MouseEvent mouseEvent) {

@@ -2,12 +2,16 @@ package service;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class AudioService {
     private static MediaPlayer audiobook;
     private static String currentAudiobookName;
     private static Path currentDir;
+    private static Path currentAudiobookPath;
 
     private AudioService(){}
 
@@ -16,6 +20,7 @@ public class AudioService {
     }
 
     public static void openAudiobookFromPath(Path path){
+        currentAudiobookPath = path;
         currentAudiobookName = path.getFileName().toString();
         currentDir = path.getParent();
 
@@ -31,11 +36,16 @@ public class AudioService {
         currentAudiobookName = nextAudiobookName;
         String formatAudiobookName = nextAudiobookName.replaceAll(" ", "%20");
 
+        currentAudiobookPath = Path.of(currentDir.toAbsolutePath() + "\\" + currentAudiobookName);
         Media bookFile = new Media(currentDir.toUri() + formatAudiobookName);
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();
     }
-    public static String getAudiobookPath(){
-        return currentDir.toUri() + currentAudiobookName;
+    public static Path getAudiobookPath(){
+        return currentAudiobookPath;
+    }
+
+    public static void setTimeOnAudiobook(String readLine) {
+        audiobook.setStartTime(Duration.millis(Double.parseDouble(readLine)));
     }
 }
