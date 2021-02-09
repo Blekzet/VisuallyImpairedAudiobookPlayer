@@ -31,6 +31,16 @@ public class AudioFileService {
     }
 
     public static String getFilename(String audiobook, boolean reverseFlag){
+        int index = filenameList.indexOf(audiobook);
+        try {
+            return reverseFlag ? filenameList.get(index - 1) : filenameList.get(index + 1);
+        } catch (IndexOutOfBoundsException e){
+            return reverseFlag ? filenameList.get(filenameList.size() - 1) : filenameList.get(0);
+        }
+    }
+
+    @Deprecated
+    public static String getFilenameOld(String audiobook, boolean reverseFlag){
         String currentElement = audiobook;
         Iterator<String> filenameIter;
 
@@ -54,6 +64,7 @@ public class AudioFileService {
        }
        return currentElement;
     }
+
 
     public static void saveAudiobookData(Path audiobookPath){
         try {
