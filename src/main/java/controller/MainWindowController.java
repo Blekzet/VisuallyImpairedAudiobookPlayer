@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import service.AudioFileService;
 import service.AudioService;
 import service.StringFormatter;
@@ -38,7 +39,6 @@ public class MainWindowController {
            }
         } catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
-            return;
         }
     }
 
@@ -48,7 +48,6 @@ public class MainWindowController {
             AudioService.nextOrPrevAudiobook(false);
         } catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
-            return;
         }
     }
 
@@ -58,20 +57,21 @@ public class MainWindowController {
             AudioService.nextOrPrevAudiobook(true);
         } catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
-            return;
         }
     }
 
     public void saveClick(ActionEvent actionEvent) {
         try {
+            AudioService.getAudiobook().pause();
+            pauseOrPlay.setText("ВОСПРОИЗВЕСТИ");
             AudioFileService.saveAudiobookData(AudioService.getAudiobookPath());
         }catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
-            return;
         }
     }
 
     public void resumeFromSaveClick(ActionEvent actionEvent) {
+
     }
 
     public void setTimer(){
@@ -85,5 +85,9 @@ public class MainWindowController {
                 ));
             }
         }, 0, 1000);
+    }
+
+    public void setSliderSound(MouseEvent mouseEvent) {
+        AudioService.getAudiobook().setVolume(sound.getValue());
     }
 }

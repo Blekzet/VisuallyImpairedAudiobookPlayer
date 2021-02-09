@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,7 +23,7 @@ public class AudioFileService {
                         .filter(file -> !Files.isDirectory(file))
                         .map(Path::getFileName)
                         .map(Path::toString)
-                        .filter(x -> StringFormatter.getFileExtension(x).equals(".mp3"))
+                        .filter(x -> Objects.equals(StringFormatter.getFileExtension(x), ".mp3"))
                         .collect(Collectors.toList());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -39,15 +40,15 @@ public class AudioFileService {
         }
     }
 
-    public static void saveAudiobookData(Path audiobookPath){
+    public static void saveAudiobookData(String audiobookPath){
         try {
             Files.deleteIfExists(VIAPSave);
             Files.createFile(VIAPSave);
-            Files.writeString(VIAPSave, audiobookPath.toString() + "\n", StandardOpenOption.APPEND);
-            Files.writeString(VIAPSave, AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
+            Files.writeString(VIAPSave, audiobookPath + "\n" + AudioService.getAudiobook().getCurrentTime().toString(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             new DialogStage().showErrorStage("НЕВОЗМОЖНО СОХРАНИТЬ");
         }
 
     }
+
 }
