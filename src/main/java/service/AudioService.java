@@ -10,7 +10,7 @@ public class AudioService {
     private static Path currentDir;
     private static Path currentAudiobookPath;
 
-    private AudioService(){};
+    private AudioService(){}
 
     public static MediaPlayer getAudiobook() {
         return audiobook;
@@ -26,10 +26,10 @@ public class AudioService {
         audiobook.play();
     }
 
-    public static void nextAudiobook(boolean reverceFlag){
+    public static void nextOrPrevAudiobook(boolean reverseFlag){
         AudioFileService.filesList(currentDir);
-        currentAudiobookName = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverceFlag);
-        Media bookFile = new Media(currentDir.toUri().toString() + currentAudiobookName);
+        currentAudiobookName = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverseFlag);
+        Media bookFile = new Media(currentDir.toUri() + currentAudiobookName);
 
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();

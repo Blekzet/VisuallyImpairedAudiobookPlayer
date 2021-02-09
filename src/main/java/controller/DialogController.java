@@ -15,6 +15,6 @@ public class DialogController {
 
     public void closeDialog(ActionEvent actionEvent) {
         Stage errorStage = (Stage) close.getScene().getWindow();
-        errorStage.close();;
+        errorStage.close();
     }
 }

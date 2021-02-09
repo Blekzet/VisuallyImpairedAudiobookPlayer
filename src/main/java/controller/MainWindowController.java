@@ -44,7 +44,7 @@ public class MainWindowController {
     public void nextAudio(ActionEvent actionEvent) {
         try{
             AudioService.getAudiobook().pause();
-            AudioService.nextAudiobook(false);
+            AudioService.nextOrPrevAudiobook(false);
         } catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
             return;
@@ -54,7 +54,7 @@ public class MainWindowController {
     public void prevAudio(ActionEvent actionEvent) {
         try{
             AudioService.getAudiobook().pause();
-            AudioService.nextAudiobook(true);
+            AudioService.nextOrPrevAudiobook(true);
         } catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
             return;
@@ -79,9 +79,9 @@ public class MainWindowController {
             @Override
             public void run() {
                 Platform.runLater(() -> timer.setText(
-                        StringFormatter.formatDurationFromSecondToStandart(AudioService.getAudiobook().getCurrentTime())
+                        StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getCurrentTime())
                         + "/"
-                        + StringFormatter.formatDurationFromSecondToStandart(AudioService.getAudiobook().getStopTime())
+                        + StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getStopTime())
                 ));
             }
         }, 0, 1000);
