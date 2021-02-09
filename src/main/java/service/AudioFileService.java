@@ -15,7 +15,7 @@ public class AudioFileService {
     @Deprecated
     private static List<String> reverseFilenameList;
 
-    public static void filesSet(Path path){
+    public static void filesList(Path path){
         if(filenameList == null) {
             try (Stream<Path> stream = Files.list(path)) {
                 filenameList = stream
