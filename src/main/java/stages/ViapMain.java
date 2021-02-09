@@ -16,7 +16,6 @@ public class ViapMain extends Application {
     FXMLLoader fxmlLoader;
     MainWindowController mainWindowController;
 
-
     public static void main(String[] args){
         Application.launch(args);
     }

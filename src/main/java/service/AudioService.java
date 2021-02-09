@@ -1,9 +1,7 @@
 package service;
 
-import controller.MainWindowController;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.nio.file.Path;
 import java.util.Set;
 
@@ -30,11 +28,18 @@ public class AudioService {
     }
 
     public static void nextAudiobook(boolean reverceFlag){
-        String nextFilename = FileListingService.getFilename(currentAudiobookName, reverceFlag);
+        AudioFileService.filesSet(currentDir);
+        String nextFilename = AudioFileService.getFilename(currentAudiobookName, reverceFlag);
         Media bookFile = new Media(currentDir.toUri().toString() + nextFilename);
 
         audiobook = new MediaPlayer(bookFile);
         audiobook.play();
     }
+    public static Path getAudiobookPath(){
+        return currentDir;
+    }
 
+    public static String getAudiobookName() {
+        return currentAudiobookName;
+    }
 }
