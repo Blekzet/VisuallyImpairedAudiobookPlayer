@@ -48,7 +48,8 @@ public class MainWindowController {
         try{
             AudioService.getAudiobook().pause();
             AudioService.nextOrPrevAudiobook(false);
-        } catch (NullPointerException e){
+            AudioFileService.deleteSaveFile();
+        } catch (NullPointerException | IOException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
         }
     }
@@ -57,7 +58,8 @@ public class MainWindowController {
         try{
             AudioService.getAudiobook().pause();
             AudioService.nextOrPrevAudiobook(true);
-        } catch (NullPointerException e){
+            AudioFileService.deleteSaveFile();
+        } catch (NullPointerException | IOException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
         }
     }

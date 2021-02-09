@@ -60,5 +60,8 @@ public class AudioFileService {
             AudioService.setTimeOnAudiobook(reader.readLine().replace(" ms", ""));
         }
     }
+    public static void deleteSaveFile() throws IOException {
+        Files.deleteIfExists(VIAPSave);
+    }
 
 }

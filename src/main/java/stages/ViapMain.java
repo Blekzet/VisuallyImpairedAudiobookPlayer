@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class ViapMain extends Application {
+public class    ViapMain extends Application {
     FXMLLoader fxmlLoader;
     MainWindowController mainWindowController;
 
@@ -44,12 +44,12 @@ public class ViapMain extends Application {
 
     private void audioStart(){
         mainWindowController = fxmlLoader.getController();
+        mainWindowController.setTimer();
         Parameters parameters = getParameters();
         List<String> args = parameters.getRaw();
         if(args.size() > 0){
             Path path = Paths.get(args.get(0));
             AudioService.openAudiobookFromPath(path);
-            mainWindowController.setTimer();
         }else return;
     }
 }
