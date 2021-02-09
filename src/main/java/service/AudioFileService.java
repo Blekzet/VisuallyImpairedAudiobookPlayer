@@ -31,7 +31,7 @@ public class AudioFileService {
         Collections.reverse(reverseFilenameList);
     }
 
-    public static String getFilename(String audiobook, boolean reverseFlag){
+    public static String getNextOrPrevFilename(String audiobook, boolean reverseFlag){
         int index = filenameList.indexOf(audiobook);
         try {
             return reverseFlag ? filenameList.get(index - 1) : filenameList.get(index + 1);

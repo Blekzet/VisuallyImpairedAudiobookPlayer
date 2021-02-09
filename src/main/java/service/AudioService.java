@@ -29,7 +29,7 @@ public class AudioService {
 
     public static void nextAudiobook(boolean reverceFlag){
         AudioFileService.filesSet(currentDir);
-        String nextFilename = AudioFileService.getFilename(currentAudiobookName, reverceFlag);
+        String nextFilename = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverceFlag);
         Media bookFile = new Media(currentDir.toUri().toString() + nextFilename);
 
         audiobook = new MediaPlayer(bookFile);
