@@ -15,6 +15,7 @@ import java.util.TimerTask;
 public class MainWindowController {
     private boolean isPlaying = true;
     private final DialogStage errorStage = new DialogStage();
+    private final Timer delay = new Timer();
 
     public Button pauseOrPlay;
     public Button next;
@@ -74,7 +75,6 @@ public class MainWindowController {
     }
 
     public void setTimer(){
-        Timer delay = new Timer();
         delay.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {

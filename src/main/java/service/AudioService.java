@@ -2,6 +2,10 @@ package service;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
 public class AudioService {
@@ -28,7 +32,7 @@ public class AudioService {
 
     public static void nextOrPrevAudiobook(boolean reverseFlag){
         AudioFileService.filesList(currentDir);
-        currentAudiobookName = AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverseFlag);
+        currentAudiobookName = URLEncoder.encode(AudioFileService.getNextOrPrevFilename(currentAudiobookName, reverseFlag), StandardCharsets.UTF_8);
         Media bookFile = new Media(currentDir.toUri() + currentAudiobookName);
 
         audiobook = new MediaPlayer(bookFile);
