@@ -69,7 +69,6 @@ public class MainWindowController {
             System.exit(0);
         }catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
-        } finally {
         }
     }
 

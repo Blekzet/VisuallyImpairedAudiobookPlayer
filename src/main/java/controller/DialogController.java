@@ -13,7 +13,7 @@ public class DialogController {
         error.setText(message);
     }
 
-    public void closeDialog(ActionEvent actionEvent) {
+    public void closeDialog() {
         Stage errorStage = (Stage) close.getScene().getWindow();
         errorStage.close();
     }

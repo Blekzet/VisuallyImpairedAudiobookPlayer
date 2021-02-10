@@ -29,15 +29,12 @@ public class ViapMain extends Application {
         stage.setResizable(false);
         stage.getIcons().add(new Image("/images/icon.png"));
         fxmlLoader = new FXMLLoader(ViapMain.class.getResource("/fxml/MainWindow.fxml"));
-        Scene mainScene = mainScene = new Scene(fxmlLoader.load());
+        Scene mainScene = new Scene(fxmlLoader.load());
         stage.setScene(mainScene);
 
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                Platform.exit();
-                System.exit(0);
-            }
+        stage.setOnCloseRequest(windowEvent -> {
+            Platform.exit();
+            System.exit(0);
         });
 
         stage.show();
@@ -52,6 +49,6 @@ public class ViapMain extends Application {
         if(args.size() > 0){
             Path path = Paths.get(args.get(0));
             AudioService.openAudiobookFromPath(path);
-        }else return;
+        }
     }
 }
