@@ -17,17 +17,17 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>15.0.1</version>
+            <version>16-ea+6</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>15.0.1</version>
+            <version>16-ea+6</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
-            <version>11.0.1</version>
+            <version>16-ea+6</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>15.0.1</version>
+            <version>16-ea+6</version>
         </dependency>
     </dependencies>
 

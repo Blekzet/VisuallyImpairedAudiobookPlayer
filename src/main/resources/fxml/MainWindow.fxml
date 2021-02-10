@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="646.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<AnchorPane prefHeight="646.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/16-ea+6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <Button fx:id="prev" layoutX="13.0" layoutY="289.0" mnemonicParsing="false" onAction="#prevAudio" prefHeight="96.0" prefWidth="298.0" text="НАЗАД">
       <font>
          <Font name="Calibri" size="59.0" />

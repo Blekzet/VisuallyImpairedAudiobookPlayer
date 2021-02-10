@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16-ea+6"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DialogController">
    <Button fx:id="close" layoutX="51.0" layoutY="227.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="507.0"
            text="ЗАКРЫТЬ" onAction="#closeDialog">
