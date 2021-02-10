@@ -6,16 +6,16 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import service.AudioService;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class    ViapMain extends Application {
+public class ViapMain extends Application {
     FXMLLoader fxmlLoader;
     MainWindowController mainWindowController;
 
@@ -26,6 +26,8 @@ public class    ViapMain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("VIAP: Visually Impaired Audiobook Player");
+        stage.setResizable(false);
+        stage.getIcons().add(new Image("/images/icon.png"));
         fxmlLoader = new FXMLLoader(ViapMain.class.getResource("/fxml/MainWindow.fxml"));
         Scene mainScene = mainScene = new Scene(fxmlLoader.load());
         stage.setScene(mainScene);

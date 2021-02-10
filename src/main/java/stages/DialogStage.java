@@ -3,6 +3,7 @@ package stages;
 import controller.DialogController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class DialogStage{
     public void showErrorStage(String error){
         DialogController errorDialogController = fxmlLoader.getController();
         errorDialogController.setError(error);
+        errorDialog.getIcons().add(new Image("/images/error.png"));
+        errorDialog.setTitle("ОШИБКА");
         errorDialog.show();
     }
 

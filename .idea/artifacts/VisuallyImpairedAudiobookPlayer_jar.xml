@@ -3,16 +3,16 @@
     <output-path>$PROJECT_DIR$/out/artifacts/VisuallyImpairedAudiobookPlayer_jar</output-path>
     <root id="archive" name="VisuallyImpairedAudiobookPlayer.jar">
       <element id="module-output" name="VisuallyImpairedAudiobookPlayer" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/15.0.1/javafx-fxml-15.0.1.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/11.0.1/javafx-media-11.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/11.0.1/javafx-media-11.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/11.0.1/javafx-media-11.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/15.0.1/javafx-base-15.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/15.0.1/javafx-fxml-15.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/15.0.1/javafx-controls-15.0.1-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/15.0.1/javafx-fxml-15.0.1-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/15.0.1/javafx-graphics-15.0.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

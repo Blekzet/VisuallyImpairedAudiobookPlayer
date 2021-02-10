@@ -67,15 +67,18 @@ public class MainWindowController {
     public void saveClick(ActionEvent actionEvent) {
         try {
             AudioService.getAudiobook().pause();
-            pauseOrPlay.setText("ВОСПРОИЗВЕСТИ");
             AudioFileService.saveAudiobookData(AudioService.getAudiobookPath());
+            Platform.exit();
+            System.exit(0);
         }catch (NullPointerException e){
             errorStage.showErrorStage("НЕТ ФАЙЛА");
+        } finally {
         }
     }
 
     public void resumeFromSaveClick(ActionEvent actionEvent) {
         try {
+            AudioService.getAudiobook().pause();
             AudioFileService.openAudiobookFromFile();
         } catch (IOException e) {
             errorStage.showErrorStage("НЕТ ФАЙЛА");
@@ -86,11 +89,13 @@ public class MainWindowController {
         delay.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater(() -> timer.setText(
-                        StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getCurrentTime())
-                        + "/"
-                        + StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getStopTime())
-                ));
+                if(AudioService.getAudiobook() != null) {
+                    Platform.runLater(() -> timer.setText(
+                            StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getCurrentTime())
+                                    + "/"
+                                    + StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getStopTime())
+                    ));
+                }
             }
         }, 0, 10);
     }

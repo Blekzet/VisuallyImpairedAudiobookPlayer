@@ -6,36 +6,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="600" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
-   <Button fx:id="prev" layoutX="14.0" layoutY="306.0" mnemonicParsing="false" onAction="#prevAudio" prefHeight="86.0" prefWidth="284.0" text="НАЗАД">
+<AnchorPane prefHeight="820.0" prefWidth="800" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+   <Button fx:id="prev" layoutX="14.0" layoutY="357.0" mnemonicParsing="false" onAction="#prevAudio" prefHeight="155.0" prefWidth="380.0" text="НАЗАД">
       <font>
-         <Font size="39.0" />
+         <Font name="Calibri" size="82.0" />
       </font>
    </Button>
-   <Button fx:id="next" layoutX="304.0" layoutY="306.0" mnemonicParsing="false" onAction="#nextAudio" prefHeight="87.0" prefWidth="284.0" text="ВПЕРЕД">
+   <Button fx:id="next" layoutX="406.0" layoutY="357.0" mnemonicParsing="false" onAction="#nextAudio" prefHeight="155.0" prefWidth="380.0" text="ВПЕРЕД">
       <font>
-         <Font size="41.0" />
+         <Font name="Calibri" size="81.0" />
       </font>
    </Button>
-   <Button fx:id="pauseOrPlay" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#pauseOrPlayClick" prefHeight="99.0" prefWidth="574.0" text="ПАУЗА">
+   <Button fx:id="pauseOrPlay" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#pauseOrPlayClick" prefHeight="148.0" prefWidth="773.0" text="ПАУЗА">
       <font>
-         <Font size="41.0" />
+         <Font name="Calibri" size="72.0" />
       </font>
    </Button>
-   <Slider fx:id="sound" blockIncrement="0.0" layoutX="9.0" layoutY="146.0" majorTickUnit="0.5" max="1.0" onMouseDragged="#setSliderSound" prefHeight="51.0" prefWidth="574.0" showTickMarks="true" value="0.7" />
-   <Label fx:id="timer" contentDisplay="RIGHT" layoutX="45.0" layoutY="35.0" prefHeight="111.0" prefWidth="530.0" text=" " textOverrun="LEADING_ELLIPSIS">
+   <Slider fx:id="sound" blockIncrement="0.0" layoutX="9.0" layoutY="146.0" majorTickUnit="0.5" max="1.0" onMouseDragged="#setSliderSound" prefHeight="50.0" prefWidth="779.0" showTickMarks="true" value="0.7" />
+   <Label fx:id="timer" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="35.0" prefHeight="122.0" prefWidth="709.0" text="НЕТ ВРЕМЕНИ" textOverrun="CENTER_WORD_ELLIPSIS">
       <font>
          <Font size="76.0" />
       </font>
    </Label>
-   <Button fx:id="saveTime" layoutX="14.0" layoutY="401.0" mnemonicParsing="false" onAction="#saveClick" prefHeight="99.0" prefWidth="574.0" text="ЗАПОМНИТЬ">
+   <Button fx:id="saveTime" layoutX="14.0" layoutY="519.0" mnemonicParsing="false" onAction="#saveClick" prefHeight="140.0" prefWidth="773.0" text="ЗАПОМНИТЬ">
       <font>
-         <Font size="44.0" />
+         <Font name="Calibri" size="80.0" />
       </font>
    </Button>
-   <Button fx:id="resumeFromMemory" layoutX="14.0" layoutY="506.0" mnemonicParsing="false" onAction="#resumeFromSaveClick" prefHeight="99.0" prefWidth="574.0" text="ВОСПР. ИЗ ПАМЯТИ">
+   <Button fx:id="resumeFromMemory" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#resumeFromSaveClick" prefHeight="140.0" prefWidth="773.0" text="ВОСПР. ИЗ ПАМЯТИ">
       <font>
-         <Font size="44.0" />
+         <Font size="66.0" />
       </font>
    </Button>
 </AnchorPane>
