@@ -3,9 +3,7 @@ package service;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class AudioService {
     private static MediaPlayer audiobook;

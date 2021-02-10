@@ -1,16 +1,13 @@
 package controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
 import service.AudioFileService;
 import service.AudioService;
 import service.StringFormatter;
 import stages.DialogStage;
-
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +25,7 @@ public class MainWindowController {
     public Button saveTime;
     public Button resumeFromMemory;
 
-    public void pauseOrPlayClick(ActionEvent actionEvent) {
+    public void pauseOrPlayClick() {
         try{
            if(isPlaying){
                AudioService.getAudiobook().pause();
@@ -44,7 +41,7 @@ public class MainWindowController {
         }
     }
 
-    public void nextAudio(ActionEvent actionEvent) {
+    public void nextAudio() {
         try{
             AudioService.getAudiobook().pause();
             AudioService.nextOrPrevAudiobook(false);
@@ -54,7 +51,7 @@ public class MainWindowController {
         }
     }
 
-    public void prevAudio(ActionEvent actionEvent) {
+    public void prevAudio() {
         try{
             AudioService.getAudiobook().pause();
             AudioService.nextOrPrevAudiobook(true);
@@ -64,7 +61,7 @@ public class MainWindowController {
         }
     }
 
-    public void saveClick(ActionEvent actionEvent) {
+    public void saveClick() {
         try {
             AudioService.getAudiobook().pause();
             AudioFileService.saveAudiobookData(AudioService.getAudiobookPath());
@@ -76,7 +73,7 @@ public class MainWindowController {
         }
     }
 
-    public void resumeFromSaveClick(ActionEvent actionEvent) {
+    public void resumeFromSaveClick() {
         try {
             AudioService.getAudiobook().pause();
             AudioFileService.openAudiobookFromFile();
@@ -90,6 +87,7 @@ public class MainWindowController {
             @Override
             public void run() {
                 if(AudioService.getAudiobook() != null) {
+                    if(AudioService.getAudiobook().getStopTime().equals(AudioService.getAudiobook().getCurrentTime())) nextAudio();
                     Platform.runLater(() -> timer.setText(
                             StringFormatter.formatDurationFromSecond(AudioService.getAudiobook().getCurrentTime())
                                     + "/"
@@ -100,7 +98,7 @@ public class MainWindowController {
         }, 0, 10);
     }
 
-    public void setSliderSound(MouseEvent mouseEvent) {
+    public void setSliderSound() {
         AudioService.getAudiobook().setVolume(sound.getValue());
     }
 }
